@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>TIENDA DE PRODUCTOS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"/>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  </head>
+  <body class="container mt-5">
+    <div class="alert alert-info display-1 text-center">
+      LISTADO DE DISFRACES
+    </div>
+    {% for disfraz in disfraces%}
+    {% endfor %}
+
+    {% if disfraces %}
+    <table class="table">
+      <thead>
+        <th>ID</th>
+        <th>Nombre Disfraz</th>
+        <th>Estado</th>
+        <th>Accesorios</th>
+        <th>Para</th>
+        <th>Talla</th>
+        <th>Precio</th>
+      </thead>
+      <tbody>
+        {% for d in disfraces %}
+        <tr>
+          <td>{{d.id}}</td>
+          <td>{{d.Nombre_disfraz}}</td>
+          <td>{{d.Estado}}</td>
+          <td>{{d.Accesorios}}</td>
+          <td>{{d.Para}}</td>
+          <td>{{d.Talla}}</td>
+          <td>{{d.Precio}}</td>
+          <td><a href="/modificardisfraces/{{ proyecto.id }}" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></td>
+          <td><a href="/eliminardisfraces/{{ proyecto.id }}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-warning">NO HAY DISFRACES POR EL MOMENTO</div>
+    {% endif %}
+    <a href="../" class="btn btn-danger">VOLVER</a>
+    <a href="../agregardisfraces" class="btn btn-info float-end">AGREGAR DISFRAZ</a>
+  </body>
+</html>
